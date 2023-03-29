@@ -30,10 +30,11 @@ public class TicTacToeGame {
         row = input.nextInt();
         System.out.println("Enter a desired column: ");
         col = input.nextInt();
+        playSuccessful= false;
 
-        while(row>2 || col >2)
+        while(row < 0 || row >= TicTacToeBoard.SIZE|| col >= TicTacToeBoard.SIZE || col < 0)
         {
-            System.out.println("Try again, Input rows and columns less than 3");
+            System.out.println("Try again, Input rows and columns less than " + TicTacToeBoard.SIZE + " and greater than 0  ");
             System.out.println("Enter a desired row: ");
             row = input.nextInt();
             System.out.println("Enter a desired column: ");
@@ -41,18 +42,31 @@ public class TicTacToeGame {
 
         }
         
-        while(!board.play(row, col, player.getSymbol()))
-        {
-            System.out.println("Try again");
-            System.out.println("Enter a desired row: ");
-            row = input.nextInt();
-            System.out.println("Enter a desired column: ");
-            col = input.nextInt();
-        }
-        System.out.println("The board now looks like this: ");
-        board.printBoard();
-        
+        boolean check = board.play(row, col, player.getSymbol());
 
+        if(check)
+        {
+            playSuccessful=true;     
+            System.out.println("The board now looks like this: ");
+            board.printBoard();           
+        }
+        else
+        {
+            while(playSuccessful==false)
+            {
+                System.out.println("Try again");
+                System.out.println("Enter a desired row: ");
+                row = input.nextInt();
+                System.out.println("Enter a desired column: ");
+                col = input.nextInt();
+                if(board.play(row, col, player.getSymbol()))
+                {
+                    playSuccessful=true;       
+                    System.out.println("The board now looks like this: ");
+                    board.printBoard();         
+                }
+            }
+        }
 
     }
 

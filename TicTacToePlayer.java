@@ -14,7 +14,7 @@ public class TicTacToePlayer
    * This method reads in the player's name and desired symbol.
    * It allows only non-digit single-character symbols.
    */
-  public void getPlayerInfo() {
+  public void getPlayerInfo () {
     Scanner input = new Scanner(System.in);
     String pattern = "[^\\d]";
     String answer;

@@ -23,7 +23,7 @@ public class TicTacToeBoard {
      */
     public TicTacToeBoard() {
         // TODO: Complete the method
-        board = new String [3][3];
+        board = new String [SIZE][SIZE];
         for(int i =0; i< board.length; i++)
         {
             for(int j = 0; j< board[i].length; j++)
@@ -97,7 +97,7 @@ public class TicTacToeBoard {
      */
     private void detectWin() {
         // TODO: Correct the method
-        String [] element = new String[9];
+        String [] element = new String[SIZE*SIZE];
         int num = 0;
         for(int row = 0; row < board.length; row++)
         {
